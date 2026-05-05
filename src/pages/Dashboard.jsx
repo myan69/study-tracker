@@ -371,6 +371,7 @@ function Dashboard() {
             <input 
               type="time" 
               id="manual-time"
+              defaultValue="00:00"
               style={{ padding: 8, fontSize: '1rem', border: '1px solid var(--border-color)' }}
             />
             <button 
