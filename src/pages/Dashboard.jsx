@@ -367,10 +367,24 @@ function Dashboard() {
 
         <div style={{ marginTop: 30, padding: '20px', border: '1px dashed #ccc' }}>
           <p style={{ margin: '0 0 10px 0', fontSize: '0.9rem', fontWeight: 'bold' }}>手動で記録を追加</p>
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}><input type="number" inputMode="decimal" placeholder="0" id="manual-hours" style={{ width: 60, padding: 8, fontSize: '1rem', border: '1px solid var(--border-color)' }} /><span>時間</span></div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}><input type="number" inputMode="decimal" placeholder="0" id="manual-mins" style={{ width: 60, padding: 8, fontSize: '1rem', border: '1px solid var(--border-color)' }} /><span>分</span></div>
-            <button type="button" onClick={() => { const h = document.getElementById('manual-hours'), m = document.getElementById('manual-mins'); handleManualSave(h.value, m.value); h.value=''; m.value=''; }} style={{ padding: '8px 15px', background: 'var(--border-color)', color: 'white', border: 'none', fontWeight: 'bold' }}>ADD LOG</button>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+            <input 
+              type="time" 
+              id="manual-time"
+              style={{ padding: 8, fontSize: '1rem', border: '1px solid var(--border-color)' }}
+            />
+            <button 
+              type="button"
+              onClick={() => {
+                const timeVal = document.getElementById('manual-time').value // "HH:MM"
+                const [h, m] = timeVal.split(':')
+                handleManualSave(h, m)
+                document.getElementById('manual-time').value = ''
+              }}
+              style={{ padding: '8px 15px', background: 'var(--border-color)', color: 'white', border: 'none', fontWeight: 'bold' }}
+            >
+              ADD LOG
+            </button>
           </div>
         </div>
       </section>
