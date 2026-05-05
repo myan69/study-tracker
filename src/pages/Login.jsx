@@ -37,7 +37,7 @@ function Login() {
             await new Promise(r => setTimeout(r, 1000))
           }
         }
-        showAlert('確認メールを送信しました。\nメール内のリンクをクリックして登録を完了してください。')
+        showAlert('登録が完了しました。そのままログインできます。')
       }
     } else {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
