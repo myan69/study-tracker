@@ -89,6 +89,10 @@ function Social() {
       return showAlert('ユーザーが見つかりませんでした')
     }
 
+    if (profile.id === user.id) {
+      return showAlert('自分自身はフォローできません')
+    }
+
     const { error: followError } = await supabase
       .from('follows')
       .insert([{ follower_id: user.id, following_id: profile.id, status: 'pending' }])
