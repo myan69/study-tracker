@@ -22,8 +22,9 @@ h1, h2, h3 {
   letter-spacing: -0.02em;
 }
 
-input, button {
+input, button, select {
   font-family: inherit;
+  font-size: 16px; /* iOSのズーム防止 */
 }
 
 button {

@@ -70,6 +70,7 @@ function Login() {
                 display: 'block', 
                 width: '100%', 
                 padding: 12, 
+                fontSize: '1rem',
                 border: '2px solid var(--border-color)', 
                 boxSizing: 'border-box',
                 outline: 'none'

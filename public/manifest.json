@@ -1,0 +1,15 @@
+{
+  "name": "Study Tracker",
+  "short_name": "Study",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfdfc",
+  "theme_color": "#2c2c2c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
