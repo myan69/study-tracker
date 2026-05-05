@@ -25,6 +25,7 @@ h1, h2, h3 {
 input, button, select {
   font-family: inherit;
   font-size: 16px; /* iOSのズーム防止 */
+  touch-action: manipulation;
 }
 
 button {
