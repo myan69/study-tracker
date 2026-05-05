@@ -89,6 +89,7 @@ function Dashboard() {
   }
 
   const handleDelete = async (id) => {
+    console.log("Delete clicked for:", id);
     if (!(await showConfirm('この記録を削除しますか？'))) return
     const { error } = await supabase.from('study_logs').delete().match({ id })
     if (error) showAlert('削除に失敗しました: ' + error.message)
