@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAuth } from './context/AuthContext'
+import { ModalProvider } from './context/ModalContext'
 import anime from 'animejs/lib/anime.min.js'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -15,7 +16,6 @@ function App() {
   // ページ切り替えアニメーション
   useEffect(() => {
     if (contentRef.current && !loading && user) {
-      // 一旦透明にしてからアニメーション
       anime.set(contentRef.current, { opacity: 0, translateY: 10 })
       anime({
         targets: contentRef.current,
@@ -42,7 +42,7 @@ function App() {
   }
 
   return (
-    <>
+    <ModalProvider>
       <nav style={{ 
         borderBottom: '2px solid var(--border-color)', 
         padding: '10px 20px', 
@@ -111,7 +111,7 @@ function App() {
       <div ref={contentRef}>
         {renderPage()}
       </div>
-    </>
+    </ModalProvider>
   )
 }
 

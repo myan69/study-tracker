@@ -8,9 +8,7 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <ModalProvider>
-        <App />
-      </ModalProvider>
+      <App />
     </AuthProvider>
   </StrictMode>,
 )
