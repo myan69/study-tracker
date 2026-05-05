@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAuth } from './context/AuthContext'
-import { ModalProvider } from './context/ModalContext'
 import anime from 'animejs/lib/anime.min.js'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -40,7 +39,7 @@ function App() {
   }
 
   return (
-    <ModalProvider>
+    <>
       <nav style={{ 
         borderBottom: '2px solid var(--border-color)', 
         padding: '10px 20px', 
@@ -73,7 +72,7 @@ function App() {
       <div ref={contentRef}>
         <CurrentPage />
       </div>
-    </ModalProvider>
+    </>
   )
 }
 
