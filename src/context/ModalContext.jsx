@@ -1,34 +1,27 @@
 import { createContext, useContext, useState, useCallback } from 'react'
 
-const ModalContext = createContext()
+const ModalContext = createContext({
+  showAlert: () => {},
+  showConfirm: () => {}
+})
 
 export function ModalProvider({ children }) {
   const [modal, setModal] = useState({
     isOpen: false,
     message: '',
-    type: 'alert', // 'alert' | 'confirm'
+    type: 'alert',
     resolve: null
   })
 
   const showAlert = useCallback((message) => {
     return new Promise((resolve) => {
-      setModal({
-        isOpen: true,
-        message,
-        type: 'alert',
-        resolve
-      })
+      setModal({ isOpen: true, message, type: 'alert', resolve })
     })
   }, [])
 
   const showConfirm = useCallback((message) => {
     return new Promise((resolve) => {
-      setModal({
-        isOpen: true,
-        message,
-        type: 'confirm',
-        resolve
-      })
+      setModal({ isOpen: true, message, type: 'confirm', resolve })
     })
   }, [])
 
@@ -48,26 +41,11 @@ export function ModalProvider({ children }) {
             <div className="modal-actions">
               {modal.type === 'confirm' ? (
                 <>
-                  <button 
-                    className="modal-button primary" 
-                    onClick={() => handleClose(false)}
-                  >
-                    NO
-                  </button>
-                  <button 
-                    className="modal-button secondary" 
-                    onClick={() => handleClose(true)}
-                  >
-                    YES
-                  </button>
+                  <button className="modal-button primary" onClick={() => handleClose(false)}>NO</button>
+                  <button className="modal-button secondary" onClick={() => handleClose(true)}>YES</button>
                 </>
               ) : (
-                <button 
-                  className="modal-button primary" 
-                  onClick={() => handleClose(true)}
-                >
-                  OK
-                </button>
+                <button className="modal-button primary" onClick={() => handleClose(true)}>OK</button>
               )}
             </div>
           </div>
