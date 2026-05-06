@@ -46,18 +46,8 @@ function App() {
 
   return (
     <>
-      <nav style={{ 
-        borderBottom: '3px solid #333', 
-        padding: '12px 24px', 
-        display: 'flex', 
-        justifyContent: 'space-between',
-        background: '#ffffff',
-        position: 'sticky',
-        top: 0,
-        zIndex: 10,
-        alignItems: 'center'
-      }}>
-        <h1 style={{ margin: 0, fontSize: '1.25rem' }}>StudyTracker</h1>
+      <nav className="navbar">
+        <h1 className="nav-title">StudyTracker</h1>
         <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
         </button>
@@ -67,16 +57,7 @@ function App() {
               key={page}
               aria-label={`${page} ページへ移動`}
               onClick={() => handleNav(page)}
-              style={{ 
-                background: 'none', 
-                border: 'none', 
-                color: currentPage === page ? '#0070f3' : '#333',
-                fontWeight: currentPage === page ? '800' : '600',
-                fontSize: '1rem',
-                cursor: 'pointer',
-                borderBottom: currentPage === page ? '2px solid #0070f3' : 'none',
-                paddingBottom: '2px'
-              }}
+              className={`nav-link-btn ${currentPage === page ? 'active' : ''}`}
             >
               {page.toUpperCase()}
             </button>
