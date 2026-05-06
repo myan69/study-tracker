@@ -51,6 +51,7 @@ function App() {
         <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
         </button>
+        {menuOpen && <div className="menu-overlay" onClick={() => setMenuOpen(false)} />}
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {['dashboard', 'subjects', 'social', 'settings'].map((page) => (
             <button 
