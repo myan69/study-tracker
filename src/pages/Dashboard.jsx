@@ -126,7 +126,15 @@ function Dashboard() {
 
   const fetchSubjects = async () => {
     const { data } = await supabase.from('subjects').select('*').order('name', { ascending: true })
-    setSubjects(data || [])
+    if (!data || data.length === 0) {
+      const { data: edgeData, error } = await supabase.functions.invoke('import-subjects')
+      if (!error) {
+        const { data: refetched } = await supabase.from('subjects').select('*').order('name', { ascending: true })
+        setSubjects(refetched || [])
+      }
+    } else {
+      setSubjects(data || [])
+    }
   }
 
   useEffect(() => {
