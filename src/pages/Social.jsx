@@ -76,7 +76,11 @@ function Social() {
   const handleFollow = async (e) => {
     e.preventDefault()
     const searchTerm = searchEmail.trim().toLowerCase()
-    if (!searchTerm || searchTerm === user.email.toLowerCase()) return
+    if (!searchTerm) return
+
+    if (searchTerm === user.email.toLowerCase()) {
+      return showAlert('自分自身はフォローできません')
+    }
 
     // メールアドレスまたはニックネームでユーザーを探す
     const { data: profile, error: profileError } = await supabase
