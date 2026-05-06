@@ -17,6 +17,42 @@
   }
 }
 
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: 3px solid #333;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 3px solid #333;
+    padding: 20px;
+    gap: 16px;
+    z-index: 20;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .hamburger-btn {
+    display: block;
+  }
+}
+
 .hero {
   position: relative;
 

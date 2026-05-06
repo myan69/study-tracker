@@ -10,6 +10,7 @@ import Settings from './pages/Settings'
 function App() {
   const { user, loading } = useAuth()
   const [currentPage, setCurrentPage] = useState('dashboard')
+  const [menuOpen, setMenuOpen] = useState(false)
   const contentRef = useRef(null)
 
   useEffect(() => {
@@ -38,39 +39,49 @@ function App() {
     }
   }
 
+  const handleNav = (page) => {
+    setCurrentPage(page)
+    setMenuOpen(false)
+  }
+
   return (
     <>
       <nav style={{ 
-        borderBottom: '1px solid #e0e0e0', 
+        borderBottom: '3px solid #333', 
         padding: '12px 24px', 
         display: 'flex', 
-        gap: '24px',
+        justifyContent: 'space-between',
         background: '#ffffff',
         position: 'sticky',
         top: 0,
         zIndex: 10,
-        alignItems: 'center',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+        alignItems: 'center'
       }}>
-        <h1 style={{ margin: 0, fontSize: '1.25rem', marginRight: 'auto' }}>StudyTracker</h1>
-        {['dashboard', 'subjects', 'social', 'settings'].map((page) => (
-          <button 
-            key={page}
-            aria-label={`${page} ページへ移動`}
-            onClick={() => setCurrentPage(page)}
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              color: currentPage === page ? '#0070f3' : '#333',
-              fontWeight: currentPage === page ? '600' : '400',
-              fontSize: '0.95rem',
-              cursor: 'pointer',
-              transition: 'color 0.2s'
-            }}
-          >
-            {page.charAt(0).toUpperCase() + page.slice(1)}
-          </button>
-        ))}
+        <h1 style={{ margin: 0, fontSize: '1.25rem' }}>StudyTracker</h1>
+        <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          {['dashboard', 'subjects', 'social', 'settings'].map((page) => (
+            <button 
+              key={page}
+              aria-label={`${page} ページへ移動`}
+              onClick={() => handleNav(page)}
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: currentPage === page ? '#0070f3' : '#333',
+                fontWeight: currentPage === page ? '800' : '600',
+                fontSize: '1rem',
+                cursor: 'pointer',
+                borderBottom: currentPage === page ? '2px solid #0070f3' : 'none',
+                paddingBottom: '2px'
+              }}
+            >
+              {page.toUpperCase()}
+            </button>
+          ))}
+        </div>
       </nav>
 
       <div ref={contentRef}>
