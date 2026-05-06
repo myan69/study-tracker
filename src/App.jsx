@@ -41,30 +41,34 @@ function App() {
   return (
     <>
       <nav style={{ 
-        borderBottom: '2px solid var(--border-color)', 
-        padding: '10px 20px', 
+        borderBottom: '1px solid #e0e0e0', 
+        padding: '12px 24px', 
         display: 'flex', 
-        gap: 20,
-        background: 'white',
+        gap: '24px',
+        background: '#ffffff',
         position: 'sticky',
         top: 0,
         zIndex: 10,
-        flexWrap: 'wrap'
+        alignItems: 'center',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
       }}>
+        <h1 style={{ margin: 0, fontSize: '1.25rem', marginRight: 'auto' }}>StudyTracker</h1>
         {['dashboard', 'subjects', 'social', 'settings'].map((page) => (
           <button 
             key={page}
+            aria-label={`${page} ページへ移動`}
             onClick={() => setCurrentPage(page)}
             style={{ 
               background: 'none', 
               border: 'none', 
-              fontWeight: currentPage === page ? 'bold' : 'normal',
-              textDecoration: currentPage === page ? 'underline' : 'none',
-              fontSize: '1rem',
-              cursor: 'pointer'
+              color: currentPage === page ? '#0070f3' : '#333',
+              fontWeight: currentPage === page ? '600' : '400',
+              fontSize: '0.95rem',
+              cursor: 'pointer',
+              transition: 'color 0.2s'
             }}
           >
-            {page.toUpperCase()}
+            {page.charAt(0).toUpperCase() + page.slice(1)}
           </button>
         ))}
       </nav>
