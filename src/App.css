@@ -36,16 +36,17 @@
   .nav-links {
     display: none;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 60px;
     left: 0;
     right: 0;
+    bottom: 0;
     background: #ffffff !important;
-    border-bottom: 3px solid #333;
     padding: 20px;
     gap: 16px;
-    z-index: 1000;
+    z-index: 9999;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow-y: auto;
   }
   .nav-links.open {
     display: flex;
