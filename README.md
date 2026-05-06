@@ -1,16 +1,63 @@
-# React + Vite
+# STUDY TRACKER 📚
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+集中を最大化し、仲間と切磋琢磨するための、質実剛健な学習管理アプリ。  
+「道具としての信頼感」を追求した、アナログのノートのような高コントラスト・デザイン。
 
-Currently, two official plugins are available:
+## 🌟 主な機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **超集中タイマー**: 起動すると全画面モードに。大きな数字と最小限の操作系で、学習への没入感を高めます。
+- **手動記録**: タイマーを忘れた際や、後から記録したい場合も、時間・分単位で柔軟に追加可能。
+- **教材ライブラリ（全体共有）**: 定番参考書から自分のお気に入りまで、カラーパレットで色付けして管理。全員で同じ教材リストを共有します。
+- **モチベーション可視化**: 教材ごとに色分けされた積み上げ棒グラフで、一週間の頑張りを直感的に把握。
+- **友達共有（承認制）**: 
+  - メアドやニックネームで友達を検索・フォロー。
+  - 相互フォローが成立すると、お互いの最新の学習記録がタイムラインに流れます。
+  - 友達のプロフィールから詳細なグラフや履歴も閲覧可能。
+- **PWA対応**: スマホのホーム画面に追加して、ネイティブアプリのように全画面で起動できます。
 
-## React Compiler
+## 🎨 デザインコンセプト
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+「最近のAIアプリ」のようなふわふわしたデザインを排除。
+- **高コントラスト**: 白と濃いグレーのパキッとした配色。
+- **太いボーダー**: 堅牢な道具であることを強調。
+- **アニメーション**: `anime.js` による、機械的で精緻な動き。
 
-## Expanding the ESLint configuration
+## 🛠 技術スタック
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **フロントエンド**: React (Vite)
+- **バックエンド**: Supabase (Auth, DB, Storage)
+- **アニメーション**: anime.js
+- **統計グラフ**: Recharts
+- **デプロイ**: Vercel
+
+## 🚀 セットアップ
+
+### 1. リポジトリのクローン
+```bash
+git clone https://github.com/your-username/study-tracker.git
+cd study-tracker
+```
+
+### 2. 依存関係のインストール
+```bash
+npm install
+```
+
+### 3. 環境変数の設定
+`.env` ファイルを作成し、Supabaseのプロジェクト情報を入力してください。
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### 4. データベース設定
+`supabase-setup.md` に記載されているSQLをSupabaseのSQL Editorで実行してください。
+
+### 5. 開発サーバーの起動
+```bash
+npm run dev
+```
+
+## 📄 ライセンス
+
+MIT License
