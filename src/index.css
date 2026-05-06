@@ -52,7 +52,7 @@ button:active {
 
   .grid-responsive {
     grid-template-columns: 1fr !important;
-    gap: 40px !important;
+    gap: 20px !important;
   }
 
   nav {
