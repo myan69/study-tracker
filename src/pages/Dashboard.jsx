@@ -81,7 +81,6 @@ function Dashboard() {
     const { data, error } = await supabase
       .from('study_logs')
       .select('*, subjects(image_url)')
-      .eq('user_id', user.id)
       .order('created_at', { ascending: false })
     
     if (error) console.error('Error fetching logs:', error)

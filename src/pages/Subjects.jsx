@@ -4,11 +4,8 @@ import { useAuth } from '../context/AuthContext'
 import { useModal } from '../context/ModalContext'
 
 function Subjects() {
-  const { user } = useAuth()
   const { showAlert, showConfirm } = useModal()
   
-  if (!user) return null
-
   const [subjects, setSubjects] = useState([])
   const [name, setName] = useState('')
   const [color, setColor] = useState('#3b5bdb')
@@ -40,7 +37,7 @@ function Subjects() {
   const handleUpload = async (file) => {
     const fileExt = file.name.split('.').pop()
     const fileName = `${Math.random()}.${fileExt}`
-    const filePath = `${user.id}/${fileName}`
+    const filePath = `${fileName}`
 
     const { error: uploadError } = await supabase.storage
       .from('subject-images')
@@ -75,7 +72,7 @@ function Subjects() {
         showAlert('更新しました')
       } else {
         const { error } = await supabase.from('subjects').insert([
-          { user_id: user.id, name, image_url, color }
+          { name, image_url, color }
         ])
         if (error) throw error
         showAlert('登録しました')
