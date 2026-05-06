@@ -105,6 +105,8 @@ button:active {
 
   .nav-links.open {
     display: flex;
+    background-color: #ffffff;
+    z-index: 1000;
   }
 }
 
