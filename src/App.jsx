@@ -66,7 +66,7 @@ function App() {
         </div>
       </nav>
 
-      <div ref={contentRef}>
+      <div ref={contentRef} style={{ paddingTop: '70px' }}>
         <CurrentPage />
       </div>
     </>
