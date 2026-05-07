@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext'
 import { useModal } from '../context/ModalContext'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import anime from 'animejs/lib/anime.min.js'
+import { subscribeUser } from '../lib/push'
 
 function Dashboard() {
   const { user, profile } = useAuth()
@@ -139,7 +140,8 @@ function Dashboard() {
   useEffect(() => {
     fetchLogs()
     fetchSubjects()
-  }, [])
+    if (user) subscribeUser(user.id)
+  }, [user])
 
   useEffect(() => {
     let interval = null
